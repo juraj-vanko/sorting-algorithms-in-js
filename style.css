@@ -1,0 +1,12 @@
+#result {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
