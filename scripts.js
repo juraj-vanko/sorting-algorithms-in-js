@@ -1,5 +1,6 @@
 const resultEl = document.getElementById("result");
 const formElements = document.getElementById("form").elements;
+const timeElement = document.getElementById("time");
 const sortSentence = async () => {
   let startTime;
   let endTime;
@@ -11,7 +12,7 @@ const sortSentence = async () => {
         quickSort(makeArrayFromSentence(formElements["sentence"].value))
       );
       endTime = new Date().getMilliseconds();
-      console.log(startTime, endTime, "Time is: " + (endTime - startTime));
+      showTimeOfSorting(startTime, endTime);
       break;
 
     case "merge":
@@ -21,7 +22,8 @@ const sortSentence = async () => {
         mergeSort(makeArrayFromSentence(formElements["sentence"].value))
       );
       endTime = new Date().getMilliseconds();
-      console.log(startTime, endTime, "Time is: " + (endTime - startTime));
+      showTimeOfSorting(startTime, endTime);
+
       break;
 
     case "selection":
@@ -31,15 +33,14 @@ const sortSentence = async () => {
         selectionSort(makeArrayFromSentence(formElements["sentence"].value))
       );
       endTime = new Date().getMilliseconds();
-      console.log(startTime, endTime, "Time is: " + (endTime - startTime));
+      showTimeOfSorting(startTime, endTime);
+
       break;
 
     default:
-      await new Promise((r) => {
-        makeResult(
-          quickSort(makeArrayFromSentence(formElements["sentence"].value))
-        );
-      });
+      makeResult(
+        quickSort(makeArrayFromSentence(formElements["sentence"].value))
+      );
   }
 };
 
@@ -114,6 +115,11 @@ const makeArrayFromSentence = (sentence) => sentence.split(" ");
 
 const makeResult = (array) => {
   resultEl.innerHTML = array.map((word) => makeHtmlForItem(word, word.length));
+};
+
+const showTimeOfSorting = (startDate, endDate) => {
+  const time = (endDate - startDate) / 1000;
+  timeElement.innerText = `Sorting time is: ${time} seconds.`;
 };
 
 const makeHtmlForItem = (word, length) => {
