@@ -1,6 +1,7 @@
 #result {
     display: flex;
-    gap: 10px;
+    gap: 16px;
+    margin-top: 20px;
     width: 100%;
     overflow-x: scroll;
 }
@@ -8,5 +9,6 @@
 .item {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 12px;
+    align-items: center;
 }

@@ -8,32 +8,24 @@
   </head>
   <body>
     <h1>Sort words by it's length</h1>
-
-    <input type="text" name="sentence" maxlength="100" />
-    <button onclick="">Sort</button>
-
-    <div id="result">
-      <div class="item">
-        <div class="length">jeden</div>
-        <div class="word">5</div>
-      </div>
-      <div class="item">
-        <div class="length">dva</div>
-        <div class="word">3</div>
-      </div>
-      <div class="item">
-        <div class="length">tri</div>
-        <div class="word">3</div>
-      </div>
-      <div class="item">
-        <div class="length">štyri</div>
-        <div class="word">5</div>
-      </div>
-      <div class="item">
-        <div class="length">osemsto</div>
-        <div class="word">7</div>
-      </div>
-    </div>
+    <form id="form" action="" onsubmit="event.preventDefault(); sortSentence()">
+      <textarea
+        type="text"
+        name="sentence"
+        placeholder="Write sentence without symbols ('.,- .. etc')"
+        required
+      ></textarea>
+      <select name="algorithm">
+        <option value="quick">QuickSort</option>
+        <option value="merge">MergeSort</option>
+        <option value="selection">SelectionSort</option>
+      </select>
+      <button type="submit">Sort</button>
+    </form>
+    <br /><br />
+    <h1>Result</h1>
+    <div class="time"></div>
+    <div id="result"></div>
   </body>
   <script src="scripts.js"></script>
 </html>
